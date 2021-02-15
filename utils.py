@@ -31,11 +31,11 @@ RSTO = 23
 RHEL = 24
 
 # Convert OpenPose frames to a numpy array
-def json2np(json_dir):
+def json2np(json_dir, subjectid):
     n = len(os.listdir(json_dir))
     res = np.zeros((n,75))
     for frame in range(n):
-        test_image_json = '{}/input_{}_keypoints.json'.format(json_dir, str(frame).zfill(12))
+        test_image_json = '{}/{}_{}_keypoints.json'.format(json_dir, subjectid, str(frame).zfill(12))
 
         with open(test_image_json) as data_file:  
             data = json.load(data_file)
